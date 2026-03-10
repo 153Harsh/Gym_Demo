@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Star, Users, Award, Zap, ChevronRight } from 'lucide-react';
+import { CheckCircle2, Star, Users, Award, Zap, ChevronRight, MapPin, Phone, Mail } from 'lucide-react';
 
 const Home = () => {
   return (
@@ -198,6 +198,48 @@ const Home = () => {
               </div>
             </Card>
           ))}
+        </div>
+      </section>
+
+      {/* Visit Us section */}
+      <section className="py-24 bg-muted/5">
+        <div className="container px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight">Visit <span className="text-primary">Our Studio</span></h2>
+              <p className="text-lg text-muted-foreground">
+                We're located in the heart of the city, easily accessible with plenty of parking space. Stop by for a tour and a free consultation.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 bg-primary/10 rounded-lg text-primary"><MapPin className="h-5 w-5" /></div>
+                  <span className="font-medium">123 Fitness St, Muscle City, MC 90210</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="p-2 bg-primary/10 rounded-lg text-primary"><Phone className="h-5 w-5" /></div>
+                  <span className="font-medium">+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="p-2 bg-primary/10 rounded-lg text-primary"><Mail className="h-5 w-5" /></div>
+                  <span className="font-medium">hello@fitzonegym.com</span>
+                </div>
+              </div>
+              <Button size="lg" className="rounded-full font-bold" asChild>
+                <Link to="/contact">GET DIRECTIONS</Link>
+              </Button>
+            </div>
+            <div className="h-[400px] rounded-2xl overflow-hidden border border-primary/20">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                frameBorder="0" 
+                style={{ border: 0 }} 
+                referrerPolicy="no-referrer-when-downgrade" 
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB_LJOYJL-84SMuxNB7LtRGhxEQLjswvy0&q=Gym+New+York&language=en&region=cn" 
+                allowFullScreen
+              />
+            </div>
+          </div>
         </div>
       </section>
       

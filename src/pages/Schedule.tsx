@@ -10,12 +10,12 @@ const Schedule = () => {
   const [filterInstructor, setFilterInstructor] = useState('all');
 
   const classes = [
-    { time: '07:00 AM', mon: 'HIIT (Mike)', tue: 'Yoga (Sarah)', wed: 'HIIT (Mike)', thu: 'Yoga (Sarah)', fri: 'HIIT (Mike)', sat: 'Zumba (Emily)', sun: 'Yoga (Sarah)', type: 'hiit', instr: 'mike' },
-    { time: '09:00 AM', mon: 'Strength (Marcus)', tue: 'Cardio (Julia)', wed: 'Strength (Marcus)', thu: 'Cardio (Julia)', fri: 'Strength (Marcus)', sat: 'CrossFit (Alex)', sun: 'Strength (Marcus)', type: 'strength', instr: 'marcus' },
-    { time: '11:00 AM', mon: 'Yoga (Sarah)', tue: 'CrossFit (Alex)', wed: 'Yoga (Sarah)', thu: 'CrossFit (Alex)', fri: 'Yoga (Sarah)', sat: 'HIIT (Mike)', sun: 'HIIT (Mike)', type: 'yoga', instr: 'sarah' },
-    { time: '04:00 PM', mon: 'CrossFit (Alex)', tue: 'HIIT (Mike)', wed: 'CrossFit (Alex)', thu: 'HIIT (Mike)', fri: 'CrossFit (Alex)', sat: 'Strength (Marcus)', sun: 'Zumba (Emily)', type: 'crossfit', instr: 'alex' },
-    { time: '06:00 PM', mon: 'Cardio (Julia)', tue: 'Strength (Marcus)', wed: 'Cardio (Julia)', thu: 'Strength (Marcus)', fri: 'Cardio (Julia)', sat: 'Yoga (Sarah)', sun: 'Cardio (Julia)', type: 'cardio', instr: 'julia' },
-    { time: '08:00 PM', mon: 'Zumba (Emily)', tue: 'Yoga (Sarah)', wed: 'Zumba (Emily)', thu: 'Yoga (Sarah)', fri: 'Zumba (Emily)', sat: 'Rest Day', sun: 'Rest Day', type: 'zumba', instr: 'emily' },
+    { time: '07:00 AM', mon: 'HIIT (Mike)', tue: 'Yoga (Sarah)', wed: 'HIIT (Mike)', thu: 'Yoga (Sarah)', fri: 'HIIT (Mike)', sat: 'Zumba (Emily)', sun: 'Yoga (Sarah)', type: 'hiit', instr: 'mike', level: 'Intermediate' },
+    { time: '09:00 AM', mon: 'Strength (Marcus)', tue: 'Cardio (Julia)', wed: 'Strength (Marcus)', thu: 'Cardio (Julia)', fri: 'Strength (Marcus)', sat: 'CrossFit (Alex)', sun: 'Strength (Marcus)', type: 'strength', instr: 'marcus', level: 'Advanced' },
+    { time: '11:00 AM', mon: 'Yoga (Sarah)', tue: 'CrossFit (Alex)', wed: 'Yoga (Sarah)', thu: 'CrossFit (Alex)', fri: 'Yoga (Sarah)', sat: 'HIIT (Mike)', sun: 'HIIT (Mike)', type: 'yoga', instr: 'sarah', level: 'Beginner' },
+    { time: '04:00 PM', mon: 'CrossFit (Alex)', tue: 'HIIT (Mike)', wed: 'CrossFit (Alex)', thu: 'HIIT (Mike)', fri: 'CrossFit (Alex)', sat: 'Strength (Marcus)', sun: 'Zumba (Emily)', type: 'crossfit', instr: 'alex', level: 'Advanced' },
+    { time: '06:00 PM', mon: 'Cardio (Julia)', tue: 'Strength (Marcus)', wed: 'Cardio (Julia)', thu: 'Strength (Marcus)', fri: 'Cardio (Julia)', sat: 'Yoga (Sarah)', sun: 'Cardio (Julia)', type: 'cardio', instr: 'julia', level: 'All Levels' },
+    { time: '08:00 PM', mon: 'Zumba (Emily)', tue: 'Yoga (Sarah)', wed: 'Zumba (Emily)', thu: 'Yoga (Sarah)', fri: 'Zumba (Emily)', sat: 'Rest Day', sun: 'Rest Day', type: 'zumba', instr: 'emily', level: 'Beginner' },
   ];
 
   const classTypes = [
@@ -117,7 +117,12 @@ const Schedule = () => {
                 {filteredClasses.length > 0 ? (
                   filteredClasses.map((row, i) => (
                     <TableRow key={i} className="group hover:bg-primary/5 transition-colors">
-                      <TableCell className="font-bold text-primary py-8">{row.time}</TableCell>
+                      <TableCell className="font-bold py-8">
+                         <div className="flex flex-col gap-1">
+                            <span className="text-primary">{row.time}</span>
+                            <Badge variant="outline" className="text-[9px] w-fit border-primary/20">{row.level}</Badge>
+                         </div>
+                      </TableCell>
                       <TableCell className="text-center p-4">
                         <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
                            <div className="text-sm font-bold uppercase">{row.mon}</div>
