@@ -3,11 +3,26 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Clock, User, Filter } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Clock, User, Filter, CheckCircle2, Calendar } from 'lucide-react';
+import { toast } from 'sonner';
 
 const Schedule = () => {
   const [filterClass, setFilterClass] = useState('all');
   const [filterInstructor, setFilterInstructor] = useState('all');
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [selectedClass, setSelectedClass] = useState<string>('');
+
+  const handleBooking = (className: string) => {
+    setSelectedClass(className);
+    setIsBookingOpen(true);
+  };
+
+  const confirmBooking = () => {
+    toast.success(`Successfully booked ${selectedClass}! See you there.`);
+    setIsBookingOpen(false);
+  };
 
   const classes = [
     { time: '07:00 AM', mon: 'HIIT (Mike)', tue: 'Yoga (Sarah)', wed: 'HIIT (Mike)', thu: 'Yoga (Sarah)', fri: 'HIIT (Mike)', sat: 'Zumba (Emily)', sun: 'Yoga (Sarah)', type: 'hiit', instr: 'mike', level: 'Intermediate' },
@@ -123,41 +138,23 @@ const Schedule = () => {
                             <Badge variant="outline" className="text-[9px] w-fit border-primary/20">{row.level}</Badge>
                          </div>
                       </TableCell>
-                      <TableCell className="text-center p-4">
-                        <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
-                           <div className="text-sm font-bold uppercase">{row.mon}</div>
-                        </div>
-                      </TableCell>
-                      <TableCell className="text-center p-4">
-                         <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
-                            <div className="text-sm font-bold uppercase">{row.tue}</div>
-                         </div>
-                      </TableCell>
-                      <TableCell className="text-center p-4">
-                         <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
-                            <div className="text-sm font-bold uppercase">{row.wed}</div>
-                         </div>
-                      </TableCell>
-                      <TableCell className="text-center p-4">
-                         <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
-                            <div className="text-sm font-bold uppercase">{row.thu}</div>
-                         </div>
-                      </TableCell>
-                      <TableCell className="text-center p-4">
-                         <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
-                            <div className="text-sm font-bold uppercase">{row.fri}</div>
-                         </div>
-                      </TableCell>
-                      <TableCell className="text-center p-4">
-                         <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
-                            <div className="text-sm font-bold uppercase">{row.sat}</div>
-                         </div>
-                      </TableCell>
-                      <TableCell className="text-center p-4">
-                         <div className="p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-colors">
-                            <div className="text-sm font-bold uppercase">{row.sun}</div>
-                         </div>
-                      </TableCell>
+                      {[row.mon, row.tue, row.wed, row.thu, row.fri, row.sat, row.sun].map((cell, idx) => (
+                        <TableCell key={idx} className="text-center p-4">
+                          {cell !== 'Rest Day' ? (
+                            <button 
+                              onClick={() => handleBooking(cell)}
+                              className="w-full p-4 rounded-xl border border-primary/10 bg-muted/20 group-hover:bg-background transition-all hover:border-primary hover:shadow-lg hover:shadow-primary/5 text-left"
+                            >
+                               <div className="text-sm font-bold uppercase truncate">{cell}</div>
+                               <div className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Click to Book</div>
+                            </button>
+                          ) : (
+                            <div className="p-4 rounded-xl border border-transparent bg-muted/5 italic text-muted-foreground/30 text-xs">
+                               Rest Day
+                            </div>
+                          )}
+                        </TableCell>
+                      ))}
                     </TableRow>
                   ))
                 ) : (
@@ -170,6 +167,39 @@ const Schedule = () => {
               </TableBody>
             </Table>
          </div>
+
+         {/* Booking Dialog */}
+         <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
+            <DialogContent className="sm:max-w-md bg-background border-primary/20">
+               <DialogHeader className="space-y-4">
+                  <div className="p-3 bg-primary/10 rounded-xl w-fit"><CheckCircle2 className="h-6 w-6 text-primary" /></div>
+                  <DialogTitle className="text-2xl font-extrabold uppercase tracking-tight">Book Your <span className="text-primary">Session</span></DialogTitle>
+                  <DialogDescription className="text-base">
+                     You are about to book: <span className="font-bold text-foreground">{selectedClass}</span>
+                  </DialogDescription>
+               </DialogHeader>
+               <div className="py-6 space-y-4">
+                  <div className="flex items-center gap-3 p-4 bg-muted/20 rounded-xl border border-primary/10">
+                     <Calendar className="h-5 w-5 text-primary" />
+                     <div className="space-y-0.5">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Schedule</p>
+                        <p className="text-sm font-bold">Standard Pro Member Access</p>
+                     </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 bg-muted/20 rounded-xl border border-primary/10">
+                     <User className="h-5 w-5 text-primary" />
+                     <div className="space-y-0.5">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Attendee</p>
+                        <p className="text-sm font-bold">Alex Johnson</p>
+                     </div>
+                  </div>
+               </div>
+               <DialogFooter className="sm:justify-start gap-3">
+                  <Button className="flex-1 rounded-full font-bold h-12 uppercase tracking-widest" onClick={confirmBooking}>CONFIRM BOOKING</Button>
+                  <Button variant="ghost" className="flex-1 rounded-full font-bold h-12 uppercase tracking-widest" onClick={() => setIsBookingOpen(false)}>CANCEL</Button>
+               </DialogFooter>
+            </DialogContent>
+         </Dialog>
          
          <div className="mt-12 flex flex-wrap justify-center gap-8 items-center text-sm text-muted-foreground uppercase tracking-widest font-semibold">
             <div className="flex items-center gap-2">

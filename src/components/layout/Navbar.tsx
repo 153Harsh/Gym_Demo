@@ -7,12 +7,13 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 const navItems = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
+  { name: 'Programs', path: '/services' },
   { name: 'Membership', path: '/membership' },
   { name: 'Schedule', path: '/schedule' },
+  { name: 'Tools', path: '/bmi' },
+  { name: 'Quiz', path: '/quiz' },
+  { name: 'Dashboard', path: '/dashboard' },
   { name: 'Gallery', path: '/gallery' },
-  { name: 'Trainers', path: '/trainers' },
-  { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
 ];
 

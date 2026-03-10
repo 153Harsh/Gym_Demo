@@ -36,13 +36,15 @@ const Footer = () => {
               <li><Link to="/services" className="hover:text-primary transition-colors">Services</Link></li>
               <li><Link to="/membership" className="hover:text-primary transition-colors">Membership</Link></li>
               <li><Link to="/schedule" className="hover:text-primary transition-colors">Class Schedule</Link></li>
-              <li><Link to="/blog" className="hover:text-primary transition-colors">Fitness Blog</Link></li>
+              <li><Link to="/bmi" className="hover:text-primary transition-colors">BMI Calculator</Link></li>
+              <li><Link to="/quiz" className="hover:text-primary transition-colors">Program Finder</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">Support</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link to="/dashboard" className="hover:text-primary transition-colors">Member Dashboard</Link></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors">Contact Support</Link></li>
               <li><Link to="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
               <li><Link to="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>

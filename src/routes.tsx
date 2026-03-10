@@ -8,6 +8,9 @@ import Gallery from './pages/Gallery';
 import Trainers from './pages/Trainers';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
+import BMI from './pages/BMI';
+import Quiz from './pages/Quiz';
+import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import type { ReactNode } from 'react';
 
@@ -64,6 +67,21 @@ const routes: RouteConfig[] = [
         name: 'Blog',
         path: 'blog',
         element: <Blog />
+      },
+      {
+        name: 'BMI Calculator',
+        path: 'bmi',
+        element: <BMI />
+      },
+      {
+        name: 'Program Finder',
+        path: 'quiz',
+        element: <Quiz />
+      },
+      {
+        name: 'Dashboard',
+        path: 'dashboard',
+        element: <Dashboard />
       },
       {
         name: 'Contact',
