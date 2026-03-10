@@ -61,11 +61,7 @@ A professional gym website designed to showcase facilities, services, and attrac
 - Gym updates and announcements
 - Success stories
 
-## 3. Design Requirements
-
-No specific design requirements provided by user.
-
-## 4. Technical Notes
+## 3. Technical Notes
 
 - Website should be responsive and mobile-friendly
 - Fast loading times for optimal user experience
