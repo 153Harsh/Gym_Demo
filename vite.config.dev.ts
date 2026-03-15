@@ -1,7 +1,7 @@
 
     import * as vite from 'vite';
     import { defineConfig, loadConfigFromFile } from "vite";
-    import type { Plugin, ConfigEnv } from "vite";
+    import type { Plugin, ConfigEnv, HotPayload } from "vite";
     import tailwindcss from "tailwindcss";
     import autoprefixer from "autoprefixer";
     import fs from "fs/promises";
@@ -48,9 +48,9 @@
 
     // 包装原来的 send 方法
     const _send = server.ws.send;
-    server.ws.send = (payload) => {
+    server.ws.send = (payload: HotPayload) => {
       if (hmrEnabled) {
-        return _send.call(server.ws, payload);
+        return _send.call(server.ws, JSON.stringify(payload));
       } else {
         console.log('[HMR disabled] skipped payload:', payload.type);
       }
