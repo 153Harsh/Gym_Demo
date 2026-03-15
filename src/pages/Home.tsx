@@ -134,7 +134,7 @@ const Home = () => {
                  <div>
                    <h3 className="text-2xl font-bold">Standard Pro</h3>
                    <div className="flex items-baseline gap-1 mt-2">
-                     <span className="text-4xl font-bold">$49</span>
+                     <span className="text-4xl font-bold">₹4,099</span>
                      <span className="text-muted-foreground">/month</span>
                    </div>
                  </div>
@@ -155,7 +155,7 @@ const Home = () => {
                  <div>
                    <h3 className="text-2xl font-bold">Elite VIP</h3>
                    <div className="flex items-baseline gap-1 mt-2">
-                     <span className="text-4xl font-bold">$99</span>
+                     <span className="text-4xl font-bold">₹8,299</span>
                      <span className="text-muted-foreground">/month</span>
                    </div>
                  </div>

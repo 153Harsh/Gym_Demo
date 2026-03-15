@@ -8,7 +8,7 @@ const Membership = () => {
   const plans = [
     {
       name: 'Basic',
-      price: '29',
+      price: '2,499',
       tag: 'Starter',
       icon: <Shield className="h-6 w-6 text-primary" />,
       features: ['Gym Access', 'Standard Equipment', 'Locker Rooms', 'Fitness Assessment'],
@@ -16,7 +16,7 @@ const Membership = () => {
     },
     {
       name: 'Standard Pro',
-      price: '49',
+      price: '4,099',
       tag: 'Most Popular',
       popular: true,
       icon: <Star className="h-6 w-6 text-primary" />,
@@ -25,7 +25,7 @@ const Membership = () => {
     },
     {
       name: 'Elite VIP',
-      price: '99',
+      price: '8,299',
       tag: 'Full Experience',
       icon: <Rocket className="h-6 w-6 text-primary" />,
       features: ['24/7 Access', 'Unlimited Classes', 'Personal Training (2x/Mo)', 'Guest Passes', 'Locker Rooms', 'Fitness Assessment', 'Free WiFi', 'Priority Booking', 'Spa & Sauna'],
@@ -61,7 +61,7 @@ const Membership = () => {
                 <div>
                    <h3 className="text-2xl font-bold uppercase tracking-tight">{plan.name}</h3>
                    <div className="flex items-baseline gap-1 mt-2">
-                     <span className="text-5xl font-extrabold text-primary">${plan.price}</span>
+                     <span className="text-5xl font-extrabold text-primary">₹{plan.price}</span>
                      <span className="text-muted-foreground font-medium uppercase text-sm tracking-widest">/ Month</span>
                    </div>
                 </div>
