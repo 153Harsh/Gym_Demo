@@ -1,7 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import IntersectObserver from '@/components/common/IntersectObserver';
 import { Toaster } from '@/components/ui/sonner';
+import { useEffect } from 'react';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
 
 import routes from './routes';
 
@@ -11,6 +18,7 @@ import routes from './routes';
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <IntersectObserver />
       <Routes>
         {routes.map((route, index) => (
